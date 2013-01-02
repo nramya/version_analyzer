@@ -1,0 +1,33 @@
+Author: Ramya Namarayanaswamy 
+
+#############################################################################################################################################################################################
+
+Version_diffs is written in Python, which checks for differences among the versions of an API by scanning through the GIT directory of the API. The GIT repository used is that of a tool called nanoc, which is available in https://github.com/ddfreyne/nanoc. nanoc is a Ruby web publishing system for building small to medium size websites. The website http://nanoc.stoneship.org/ contains more information on nanoc.
+
+#############################################################################################################################################################################################
+
+To find version differences using Version_diffs:
+
+  1. Download the GIT repository of the API for which the version differences have to be found.
+
+	2. Run the Version_diffs by passign the GIT repository location, the file in which the difference has to be checked, the line number and the version number, where the version number is an optional argument.
+	
+		$ python Version_diffs.py /home/../nanoc lib/lib_nanoc.rb 5 -v 6233185d1641920816bfc5f704757b2fcbae5443
+
+	3. The output looks like
+
+		git diff 6233185d1641920816bfc5f704757b2fcbae5443 e2caca6dd1b8ffcc1fb470e14044d74e3fda3573
+		no match
+		no match
+		lib/lib_nanoc.rb 1 173
+		no match
+
+		****************************************************
+
+#############################################################################################################################################################################################
+
+Interpretation of the output:
+
+	Version_diffs checks for the differences between the version numbers 6233185d1641920816bfc5f704757b2fcbae5443 and e2caca6dd1b8ffcc1fb470e14044d74e3fda3573. There are 4 changes among the two versions of which only one is present in the file lib/lib_nanoc.rb and the line number 5 falling within the range of 1 to 173. For all others, it returns a no match.
+	
+#############################################################################################################################################################################################
